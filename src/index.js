@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
-
+axios.defaults.baseURL='https://cms-backend-sample.herokuapp.com/';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 ReactDOM.render(
+  
   <React.StrictMode>
     <App />
   </React.StrictMode>,
