@@ -13,6 +13,9 @@ if(err.response){
    if(err.response.status==401||err.response.status==409){
       reject(err);
    }
+   else{
+      Errordata.data.history.push('/abc'); 
+   }
 }
 else{
    Errordata.data.history.push('/abc');

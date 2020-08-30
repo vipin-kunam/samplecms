@@ -12,7 +12,37 @@ import Display from './Containers/Display';
 import Adduser from './Containers/addredituser';
 import Home from './Containers/home';
 import Errorpage from './Containers/error';
+import Loader from './Component/Loader/loader';
+import axios from 'axios';
+import {useState,useEffect} from 'react';
 function App() {
+const [state,setstate]=useState(false);
+useEffect(()=>{
+
+  axios.interceptors.request.use(function (config) {
+    // spinning start to show
+    console.log('in axioss');
+    setstate(true);
+    return config;
+   }, function (error) {
+    setstate(false);
+     return Promise.reject(error);
+    
+   });
+  
+   axios.interceptors.response.use(function (response) {
+    // spinning hide
+    console.log('in axiose');
+    setstate(false);
+  
+    return response;
+  }, function (error) {
+    setstate(false);
+    return Promise.reject(error);
+  });
+},[])
+
+
   return (
     <BrowserRouter>
     <Container>
@@ -30,7 +60,9 @@ function App() {
 
     </Col>
   </Row>
-</Container></BrowserRouter>
+</Container>
+<Loader show={state}></Loader>
+</BrowserRouter>
   );
 }
 

@@ -117,26 +117,6 @@ axios.get('/cms/get').then((success)=>{
     <Model display ={this.state.showModel} cancel={this.canceldelete} dodelete={this.deleteuser}></Model>
      </Container>
 
-     if(this.state.showloader){
-       component=<Container style={style1}>
-       <Row>
-       <Col> </Col>
-       <Col xs={6}> </Col>
-       <Col> </Col>
-       </Row>
-       <Row>
-         <Col> </Col>
-         <Col><Spinner animation="border" role="status">
-      <span className="sr-only">Loading...</span>
-    </Spinner></Col>
-         <Col></Col>
-       </Row>
-       <Row>
-         
-       </Row>
-
-     </Container>
-     }
       
         return(component);
     }
